@@ -1,0 +1,26 @@
+﻿@model GenerateCodesViewModel
+@{
+    ViewData["Title"] = "Generate Discount Codes";
+}
+@if (@TempData["ErrMsg"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> @TempData["ErrMsg"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2>Generate Discount Codes</h2>
+
+<form method="post" asp-action="GenerateCode">
+    <div class="form-group">
+        <label for="codeLength">Code Length:</label>
+        <input type="number" class="form-control" id="codeLength" name="CodeLength" required>
+    </div>
+    <div class="form-group">
+        <label for="numberOfCodes">Number of Codes:</label>
+        <input type="number" class="form-control" id="numberOfCodes" name="NumberOfCodes" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Codes</button>
+</form>
+

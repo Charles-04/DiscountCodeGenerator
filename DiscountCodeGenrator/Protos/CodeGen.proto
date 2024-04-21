@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option csharp_namespace = "DiscountCodeGenrator";
+
+package discountCode;
+
+// The greeting service definition.
+
+
+service CodeGenerator{
+	rpc GenerateCode(GenerateCodeRequest) returns (GenerateCodeResponse);
+	rpc GetCodes(GetCodesRequest) returns (GetCodesResponse);
+	rpc UseCode(UseCodeRequest) returns(UseCodeResponse);
+}
+// The request message containing the user's name.
+
+message GenerateCodeResponse{
+	bool Result = 1;
+}
+message GenerateCodeRequest{
+	uint32 Count = 1;
+	int32 Length = 2;
+}
+message GetCodesRequest{
+	int32 PageSize =1;
+	int32 PageNumber = 2;
+}
+message GetCodeResponse{
+	string Code =1;
+	bool IsUsed =2;
+}
+message GetCodesResponse{
+	repeated GetCodeResponse Response = 1;
+	int32 Pages = 2;
+}
+message UseCodeRequest{
+	string code =1;
+}
+message UseCodeResponse{
+	int32 Result = 1;
+}

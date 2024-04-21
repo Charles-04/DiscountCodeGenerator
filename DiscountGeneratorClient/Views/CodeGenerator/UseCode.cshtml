@@ -1,0 +1,36 @@
+﻿@model UseCodeViewModel
+
+@{
+    ViewData["Title"] = "Use Discount Code";
+}
+<div class="alert-danger" asp-validation-summary="@ValidationSummary.All"></div>
+
+@if (@TempData["ErrMsg"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> @TempData["ErrMsg"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<h2>Use Discount Code</h2>
+
+
+
+<form method="post" asp-action="UseACode">
+    <div class="form-group">
+        <label for="discountCode">Discount Code:</label>
+        <input type="text" class="form-control" id="discountCode" name="DiscountCode" required>
+        <span asp-validation-for="DiscountCode"></span>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Use Code</button>
+</form>
+@section Scripts
+{
+    @{
+        Html.RenderPartial("_ValidationScriptsPartial");
+    }
+    ;
+}
+
+
